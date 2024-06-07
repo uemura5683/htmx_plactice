@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>サンプル</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>memo</h2>
+        <div>
+            拡張CSSセレクタ	説明	例<br>
+            this	自分自身を指定する。デフォルト	hx-target="this"<br>
+            closest <CSSセレクタ>	CSSセレクタに一致する一番近い親を指定する	hx-target="closest tr"<br>
+            find <CSSセレクタ>	CSSセレクタに一致する一番近い子を指定する	hx-target="find div"<br>
+            next <CSSセレクタ>	CSSセレクタに一致するDOM 内の次の要素を指定する	hx-target="next target"<br>
+            previous <CSSセレクタ>	CSSセレクタに一致する前の要素を指定する	hx-target="next target"<br>
+        </div>
+
+        <h2>シンプルな例 target</h2>
+        <p id="target">クリックしたらここが変わるよ</p>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target" hx-trigger="click">クリック</button>
+
+        <h2>シンプルな例 this</h2>
+        <p id="target2">クリックしたらボタンが変わるよ</p>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="this" hx-trigger="click">クリック</button>
+
+        <h2>シンプルな例 find</h2>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="find .target" hx-trigger="click">クリック<p class="target2">クリックしたらここが変わるよ</p></button>
+
+        <h2>シンプルな例 next</h2>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="next .next" hx-trigger="click">クリック</button>
+        <p class="next">クリックしたらここが変わるよ</p>
+
+        <h2>シンプルな例 previous</h2>
+        <p class="previous">クリックしたらここが変わるよ</p>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="previous .previous" hx-trigger="click">クリック</button>
+    </body>
+</html>
