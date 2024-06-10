@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>サンプル</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>トリガーフィルター</h2>
+        <div>
+            hx-trigger="click[xxx]"の<br>
+            []の中 にbool値(インスタンスプロパティ)を入れることでイベントをフィルタリングできる。<br>
+            以下の例では、hx-trigger="click[shiftKey]"と指定しているが、<br>
+            SHIFTキーを押しながらクリックすると、shiftKeyがtrueになるので発火する。
+        </div>
+
+        <h2>トリガーフィルター</h2>
+        <p id="target">SHIFTキーを入力しながら、クリックしたらここが変わるよ</p>
+        
+        <button
+            hx-get="https://jsonplaceholder.typicode.com/posts/1"
+            hx-target="#target"
+            hx-trigger="click[shiftKey]">クリック
+        </button>
+    
+    </body>
+</html>

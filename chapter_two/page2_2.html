@@ -24,6 +24,12 @@
         <p id="target2">クリックしたらボタンが変わるよ</p>
         <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="this" hx-trigger="click">クリック</button>
 
+        <h2>シンプルな例 closet</h2>
+        <div class="closet">
+            <p>クリックしたらこことボタンが変わるよ</p>
+            <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="closest .closet" hx-trigger="click">クリック</button>
+        </div>
+
         <h2>シンプルな例 find</h2>
         <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="find .target" hx-trigger="click">クリック<p class="target2">クリックしたらここが変わるよ</p></button>
 

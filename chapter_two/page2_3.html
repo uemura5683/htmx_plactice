@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>サンプル</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>memo</h2>
+        <div>
+            イベント名	対象属性<br>
+            change	input, textarea, select<br>
+            submit	form<br>
+            click	button, a, span, divなど<br>
+        </div>
+
+        <h2>change</h2>
+        <p class="target">入力してEnter押したらここが変わるよ</p>
+        <input hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target=".target" hx-trigger="change"></input>
+        
+        <h2>Submit Sample</h1>
+        <p class="target2">入力して送信したらここが変わるよ</p>
+        <form hx-post="https://jsonplaceholder.typicode.com/posts" hx-target="previous .target2" hx-trigger="submit">
+            <label for="name">お名前：</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <br>
+            <input type="submit" value="送信">
+        </form>
+    </body>
+</html>
