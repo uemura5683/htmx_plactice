@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>サンプル</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>memo</h2>
+        <div>
+            オプション名	説明<br>
+            once	1回のみ発火<br>
+            changed	要素が変更したときだけ発火<br>
+            delay:<時間>	発火する前に遅延が発生する<br>
+            throttle:<時間>	発火後に遅延が発生する<br>
+            ？ from:<拡張CSSセレクタ>	document,window,closest ,find ,next, next, previous, previous を指定できる。<br>
+            target:	イベントのターゲットでCSS セレクタを介してフィルター処理する<br>
+            consume	イベントは親 (または親をリッスンしている要素) に対する他の htmx リクエストを発火しない<br>
+            queue:	first: 最初のイベントをキューに入れる<br>
+            last: 最後のイベントをキューに入れる (default)<br>
+            all:すべてのイベントをキューに入れる<br>
+            none: 新しいイベントをキューに入れませんを指定できる
+        </div>
+
+        <h2>delay sample</h2>
+        <p class="target">1秒間キーを入力しなかったらここが変わるよ。</p>        
+
+        <input
+            hx-get="https://jsonplaceholder.typicode.com/posts/1"
+            hx-trigger="keyup changed delay:2s last"
+            hx-target=".target"
+        />
+    </body>
+</html>

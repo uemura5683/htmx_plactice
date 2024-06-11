@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>サンプル</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>memo</h2>
+        <div>
+            イベント	説明<br>
+            load	-	ロード時に発火する<br>
+            revealed	-	要素までスクロールしたときに発火する。
+            overflow-y: scrollのようにoverflowCSS使用時は intersect once を使う<br>
+            intersect	-	要素が最初にビューポートと交差するときに1回発火する。以下2つのオプションがある。root:<selector> : 交差のルート要素の CSS セレクターthreshold:<float> : イベントを発火させる交差点の量を示す0.0～1.0の浮動小数点数
+        </div>
+
+        <h2>load</h2>
+
+        <p id="target">ここが変わるよ</p>
+        <div 
+          hx-get="https://jsonplaceholder.typicode.com/posts/1"
+          hx-trigger="load delay:1s"
+          hx-target="#target"
+        >
+          ロードして1s後に発火します
+        </div>
+        
+        <h2>revealed</h2>
+
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p>下にスクロール</p>
+        <p id="target2">ここが変わるよ</p>
+        <div
+          hx-get="https://jsonplaceholder.typicode.com/posts/1"
+          hx-trigger="revealed"
+          hx-target="#target2">
+          ここまでスクロールしたら発火
+        </div>
+        <p>あいうえお</p>
+        <p>あいうえお</p>
+        <p>あいうえお</p>
+        <p>あいうえお</p>
+        <p>あいうえお</p>
+
+        <h2>intersect</h2>
+        <div>あとでここは後ほど確認</div>
+        
+    </body>
+</html>
