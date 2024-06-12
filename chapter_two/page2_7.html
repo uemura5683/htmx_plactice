@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>サンプル</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>ポーリング</h2>
+        <div>
+            every <time>で要素を定期的にポーリングできる。<br>
+            ポーリングとは、更新などがあるかチェックするために、一定の間隔でサーバーに問い合わせることである。<br>
+            以下の例では、/sampleに対して、10秒ごとにGETリクエストを送信して、結果をこのdivタグに反映する。<br>
+        </div>
+
+        <div hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-trigger="every 10s">
+          hello ポーリング
+        </div>
+
+        <h2>ロードポーリング</h2>
+
+        <div>
+            以下のようにloadにdelayをつけるとロードし続ける。
+        </div>
+
+        <button
+            hx-get="page2_7/messages.html"
+            hx-trigger="load delay:2s"
+            hx-swap="outerHTML">
+            2秒後に中身が変わるよ
+        </button>
+
+        <h2>複数のトリガー</h2>
+
+        <div>
+            複数のトリガーを指定する場合は、カンマ で区切る<br>
+            以下の例は、ページの読み込み時にすぐに /sample にGETリクエストが送られ、クリックするたびに 1 秒遅れて再度送られる。            
+        </div>
+
+        <div
+            hx-get="page2_7/messages2.html"
+            hx-trigger="load, click delay:5s"
+        >
+            変更前です
+        </div>
+
+    </body>
+</html>
