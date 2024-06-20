@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>サンプル</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>JavaScript経由(JavaScript API)</h2>
+        <div>
+            AJAX リクエストは JavaScript 経由でトリガーすることもできる。htmx.trigger()を使用する。パラメータは以下の3つ。<br>
+            <br>
+            elt : イベントをトリガーする要素<br>
+            name : トリガーするイベントの名前<br>
+            detail : イベントの詳細<br>
+            以下のようにすると、id=sample の要素がmyEventの応答が42になればOKとなる。<br>
+        </div>
+        <code>
+            <pre style="background: black; color: white;">
+                
+    htmx.trigger("#sample", "myEvent", {answer:42});
+            </pre>
+        </code>
+
+    </body>
+</html>
