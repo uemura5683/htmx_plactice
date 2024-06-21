@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>パラメータ</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>
+            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF">
+              パラメータ
+            </a>
+        </h2>
+        <div>
+          値が存在する場合は、その値がパラメータとして渡される。<br>
+          例えば、Formの場合はFormに入力した値がパラメータとして渡される。<br>
+          <br>
+          hx-paramsを用いるとそれらのパラメータをフィルタリングできる。<br>
+          <br>
+          hx-paramsに指定できる値は3つある。<br>
+          <br>
+          設定値	ー	説明<br>
+          *	ー	すべてのパラメータを許可する<br>
+          none	ー	何も渡さない<br>
+          not <param-list>	ー	指定したパラメータを除外する(カンマで区切る)<br>
+          <param-list>	ー	指定したパラメータのみ許可する(カンマで区切る)<br>
+
+          <code>
+            <pre style="background: black; color: white;">
+
+    &lt;div hx-get="/sample" hx-params="*"&gt;Parameter filter&lt;/div&gt;
+            </pre>
+          </code>
+
+          <form>
+            <input type="hidden" name="foo" value="bar">
+            <input
+              type="text"
+              name="description"
+              hx-get="page6_1/"
+              hx-trigger="keyup changed delay:600ms"
+              hx-params="none"
+              >
+          </form>
+
+        </div>
+    </body>
+</html>

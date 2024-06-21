@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>スワッピング</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>
+            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%A2%E3%83%BC%E3%83%95%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97morph-swaps">
+                モーフスワップ(Morph Swaps)
+            </a>
+        </h2>
+        <div>
+            htmx は拡張機能を介してモーフスワップもサポートしている<br>
+            <br>
+            モーフィングスワップでは、既存のDOMを単純に置き換えるのではなく、<br>
+            新しいコンテンツを既存のDOMにマージする。より多くのCPUを占有する代わりに、<br>
+            スワップ操作中に既存のノードをその場で変更することで、フォーカスやビデオの状態などをより適切に保持する。<br>
+            <br>
+            設定値　ー　説明
+            Idiomorph　ー　htmx 開発者によって作成されたモーフィング アルゴリズム
+            Morphdom Swap　ー　オリジナルの DOM モーフィング ライブラリであるmorphdomに基づいている
+            Alpine-morph　ー　alpine morphプラグインに基づいており、alpine.jsとうまく連携する
+        </div>
+        <h2>
+            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#view-transitions-api">
+                View Transitions API
+            </a>
+        </h2>
+        <div>
+            新しい実験的なView Transitions API は、 <br>
+            開発者に、異なる DOM 状態間のアニメーション遷移を作成する方法を提供します。<br>
+            この機能は、まだまだ開発中で、全ブラウザで利用できるわけではない。<br>
+            htmxは、特定のブラウザでこのAPIが利用できない場合に以下の手順で実現できる。<br>
+            <br>
+            htmx.config.globalViewTransitions=true にしてすべてのスワップにトランジションを使用する<br>
+            hx-swap=transition:trueを設定する<br>
+            htmx:beforeTransitionイベントをキャッチし、preventDefault()がそれを呼び出して移行をキャンセルできる<br>
+        </div>
+        <h2>
+            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3">
+                スワップオプション
+            </a>
+        </h2>
+        <div>
+            オプション	ー	説明<br>
+            transition	ー	このスワップにビュートランジションAPIを使用するかどうか(true/false )<br>
+            swap	ー	古いコンテンツがクリアされ、新しいコンテンツが挿入されたときの間に使用するためのスワップ遅延。 (e.g.100ms)<br>
+            settle	ー	新しいコンテンツが挿入され、それが解決されるまでの間の遅延時間 (e.g.100ms)<br>
+            ignoreTitle	ー	trueのとき新しいコンテンツにあるタイトルは無視され、ドキュメントタイトルを更新しない (true/false)<br>
+            scroll	ー	ターゲット要素をその上または下部にスクロールする (top/bottom)<br>
+            show	ー	ターゲット要素を上または下部にスクロールして表示する (top/bottom)
+        </div>
+    </body>
+</html>

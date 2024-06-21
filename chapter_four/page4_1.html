@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>スワッピング</title>
+        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    </head>
+    <body>
+        <h2>
+            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%82%B9%E3%83%AF%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">
+                スワッピング
+            </a>
+        </h2>
+        <div>
+            DOMのHTMLの変更方法を変えるにはhx-swapを使う。<br>
+            <br>
+            設定値	説明<br>
+            innerHTML　ー　ターゲット要素内のhtmlを置換する<br>
+            outerHTML　ー　ターゲット要素全体を返されたコンテンツで置き換える<br>
+            afterbegin　ー　ターゲット内の最初の子の前にコンテンツを追加する<br>
+            beforebegin　ー　ターゲットの親要素のターゲットの前にコンテンツを追加する<br>
+            beforeend　ー　ターゲット内の最後の子の後にコンテンツを追加する<br>
+            afterend　ー　ターゲット親要素のターゲットの後にコンテンツを追加する<br>
+            delete　ー　レスポンスに関係なくターゲット要素を削除する<br>
+            none　ー　レスポンスからコンテンツを追加しない
+        </div>
+
+        <h2>innerHTML</h2>
+        <div>foo
+          <p id="target">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target" hx-trigger="click" hx-swap="innerHTML">
+          クリック
+        </button>
+        
+        <h2>outerHTML</h2>
+        <div>foo
+          <p id="target2">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target2" hx-trigger="click" hx-swap="outerHTML">
+          クリック
+        </button>
+        
+        <h2>afterend</h2>
+        <div>foo
+          <p id="target3">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target3" hx-trigger="click" hx-swap="afterbegin">
+          クリック
+        </button>
+        
+        <h2>beforebegin</h2>
+        <div>foo
+          <p id="target4">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target4" hx-trigger="click" hx-swap="beforebegin">
+          クリック
+        </button>
+        
+        <h2>beforeend</h2>
+        <div>foo
+          <p id="target5">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target5" hx-trigger="click" hx-swap="beforeend">
+          クリック
+        </button>
+        
+        <h2>afterend</h2>
+        <div>foo
+          <p id="target6">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target6" hx-trigger="click" hx-swap="afterend">
+          クリック
+        </button>
+        
+        <h2>delete</h2>
+        <div>foo
+          <p id="target7">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target7" hx-trigger="click" hx-swap="delete">
+          クリック
+        </button>
+        
+        <h2>none</h2>
+        <div>foo
+          <p id="target8">hoge</p>
+        </div>
+        <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target="#target8" hx-trigger="click" hx-swap="none">
+          クリック
+        </button>
+
+    </body>
+</html>
