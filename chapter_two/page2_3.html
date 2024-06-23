@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>リクエストの発火　イベントの指定</title>
-        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
-    </head>
-    <body>
-        <h2>
-            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E6%8C%87%E5%AE%9A">
-                リクエストの発火　イベントの指定
-            </a>
-        </h2>
-        <div>
-            イベント名	対象属性<br>
-            change	input, textarea, select<br>
-            submit	form<br>
-            click	button, a, span, divなど<br>
-        </div>
-
-        <h2>change</h2>
-        <p class="target">入力してEnter押したらここが変わるよ</p>
-        <input hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-target=".target" hx-trigger="change"></input>
-        
-        <h2>Submit Sample</h1>
-        <p class="target2">入力して送信したらここが変わるよ</p>
-        <form hx-post="https://jsonplaceholder.typicode.com/posts" hx-target="previous .target2" hx-trigger="submit">
-            <label for="name">お名前：</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <br>
-            <input type="submit" value="送信">
-        </form>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>リクエストの発火　イベントの指定</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%82%A4%E3%83%99%E3%83%B3%E3%83%88%E3%81%AE%E6%8C%87%E5%AE%9A"
+      >
+        リクエストの発火　イベントの指定
+      </a>
+    </h2>
+    <div>
+      イベント名 対象属性<br />
+      change input, textarea, select<br />
+      submit form<br />
+      click button, a, span, divなど<br />
+    </div>
+    <h2>change</h2>
+    <p class="target">入力してEnter押したらここが変わるよ</p>
+    <input
+      hx-get="https://jsonplaceholder.typicode.com/posts/1"
+      hx-target=".target"
+      hx-trigger="change"
+    />
+    <h2>Submit Sample</h2>
+    <p class="target2">入力して送信したらここが変わるよ</p>
+    <form
+      hx-post="https://jsonplaceholder.typicode.com/posts"
+      hx-target="previous .target2"
+      hx-trigger="submit"
+    >
+      <label for="name">お名前：</label>
+      <input type="text" id="name" name="name" required />
+      <br />
+      <br />
+      <input type="submit" value="送信" />
+    </form>
+  </body>
 </html>

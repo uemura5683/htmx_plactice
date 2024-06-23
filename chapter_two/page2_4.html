@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>リクエストの発火　トリガーフィルター</title>
-        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
-    </head>
-    <body>
-        <h2>
-            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC">
-                リクエストの発火　トリガーフィルター
-            </a>
-        </h2>
-        <div>
-            hx-trigger="click[xxx]"の<br>
-            []の中 にbool値(インスタンスプロパティ)を入れることでイベントをフィルタリングできる。<br>
-            以下の例では、hx-trigger="click[shiftKey]"と指定しているが、<br>
-            SHIFTキーを押しながらクリックすると、shiftKeyがtrueになるので発火する。
-        </div>
+  <head>
+    <meta charset="utf-8" />
+    <title>リクエストの発火　トリガーフィルター</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%88%E3%83%AA%E3%82%AC%E3%83%BC%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC"
+      >
+        リクエストの発火　トリガーフィルター
+      </a>
+    </h2>
+    <div>
+      hx-trigger="click[xxx]"の<br />
+      []の中
+      にbool値(インスタンスプロパティ)を入れることでイベントをフィルタリングできる。<br />
+      以下の例では、hx-trigger="click[shiftKey]"と指定しているが、<br />
+      SHIFTキーを押しながらクリックすると、shiftKeyがtrueになるので発火する。
+    </div>
 
-        <h2>トリガーフィルター</h2>
-        <p id="target">SHIFTキーを入力しながら、クリックしたらここが変わるよ</p>
-        
-        <button
-            hx-get="https://jsonplaceholder.typicode.com/posts/1"
-            hx-target="#target"
-            hx-trigger="click[shiftKey]">クリック
-        </button>
-    
-    </body>
+    <h2>トリガーフィルター</h2>
+    <p id="target">SHIFTキーを入力しながら、クリックしたらここが変わるよ</p>
+
+    <button
+      hx-get="https://jsonplaceholder.typicode.com/posts/1"
+      hx-target="#target"
+      hx-trigger="click[shiftKey]"
+    >
+      クリック
+    </button>
+  </body>
 </html>
