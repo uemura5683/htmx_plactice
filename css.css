@@ -5,8 +5,9 @@
 body {
   margin: 0;
 }
-*::before, *::after {
-  content: '';
+*::before,
+*::after {
+  content: "";
 }
 html {
   font-size: 50%;
@@ -17,7 +18,7 @@ a {
 h1 {
   border-bottom: 1px solid #12405d;
   font-weight: normal;
-  font-size: 3.0rem;
+  font-size: 3rem;
   margin: 0 0 1rem;
   word-break: break-all;
   text-align: center;
@@ -47,17 +48,17 @@ h1 {
   overflow: scroll;
   height: auto;
 }
-.container-inner {  
+.container-inner {
   width: 90vw;
 }
 .card-wrap-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -.5rem;
+  margin: 0 -0.5rem;
   font-size: 1.6rem;
 }
 .card-wrap {
-  margin: .5rem;
+  margin: 0.5rem;
   width: calc(99.9% / 3 - 1rem);
   text-align: center;
 }
@@ -68,7 +69,7 @@ h1 {
   #container {
     width: 50%;
   }
-  .container-inner {  
+  .container-inner {
     width: auto;
   }
 }

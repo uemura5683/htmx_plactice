@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>都道府県選択</title>
-        <style>
-            div {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-            }
-            select {
-                width: 100%;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="grid">
-            <button hx-get="/chapter_one//page1_6/area1.html" hx-target="#prefecture">北海道</button>
-            <button hx-get="/chapter_one//page1_6/area2.html" hx-target="#prefecture">東北</button>
-            <button hx-get="/chapter_one//page1_6/area3.html" hx-target="#prefecture">関東</button>
-            <button hx-get="/chapter_one//page1_6/area4.html" hx-target="#prefecture">中部</button>
-            <button hx-get="/chapter_one//page1_6/area5.html" hx-target="#prefecture">近畿</button>
-            <button hx-get="/chapter_one//page1_6/area6.html" hx-target="#prefecture">中国</button>
-            <button hx-get="/chapter_one//page1_6/area7.html" hx-target="#prefecture">四国</button>
-            <button hx-get="/chapter_one//page1_6/area8.html" hx-target="#prefecture">九州・沖縄</button>            
-        </div>
-        <select id="prefecture"></select>
-        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>都道府県選択</title>
+    <style>
+      div {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      select {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <button hx-get="/chapter_one//page1_6/area1.html" hx-target="#prefecture">
+        北海道
+      </button>
+      <button hx-get="/chapter_one//page1_6/area2.html" hx-target="#prefecture">
+        東北
+      </button>
+      <button hx-get="/chapter_one//page1_6/area3.html" hx-target="#prefecture">
+        関東
+      </button>
+      <button hx-get="/chapter_one//page1_6/area4.html" hx-target="#prefecture">
+        中部
+      </button>
+      <button hx-get="/chapter_one//page1_6/area5.html" hx-target="#prefecture">
+        近畿
+      </button>
+      <button hx-get="/chapter_one//page1_6/area6.html" hx-target="#prefecture">
+        中国
+      </button>
+      <button hx-get="/chapter_one//page1_6/area7.html" hx-target="#prefecture">
+        四国
+      </button>
+      <button hx-get="/chapter_one//page1_6/area8.html" hx-target="#prefecture">
+        九州・沖縄
+      </button>
+    </div>
+    <select id="prefecture"></select>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </body>
 </html>
