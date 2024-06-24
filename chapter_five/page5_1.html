@@ -1,62 +1,64 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>同期 form:abort</title>
-        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
-    </head>
-    <body>
-        <h2>
-            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E5%90%8C%E6%9C%9F">
-              同期 form:abort
-            </a>
-        </h2>
-        <div>
-          hx-syncを使用すると同期的な処理を行うことができる。<br>
-          <a href="https://minegishirei.hatenablog.com/entry/2024/05/28/172612">
-            HTMXでのAJAX通信の同期方法
-          </a>
-      
-          <code>
-            <pre style="background: black; color: white;">
+  <head>
+    <meta charset="utf-8" />
+    <title>同期 form:abort</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E5%90%8C%E6%9C%9F"
+      >
+        同期 form:abort
+      </a>
+    </h2>
+    <div>
+      hx-syncを使用すると同期的な処理を行うことができる。<br />
+      <a href="https://minegishirei.hatenablog.com/entry/2024/05/28/172612">
+        HTMXでのAJAX通信の同期方法
+      </a>
 
-  &lt;form hx-post="/page"&gt;
-  &lt;input id="name" name="name" type="text"
-        hx-post="/name_exists"
-        hx-trigger="change"
+      <code>
+        <pre style="background: black; color: white">
+
+    &lt;form hx-post="/page"&gt;
+    &lt;input id="name" name="name" type="text"
+          hx-post="/name_exists"
+          hx-trigger="change"
     &gt;
     &lt;button type="submit"&gt;変更&lt;/button&gt;
     &lt;/form&gt;
 
             </pre>
-          </code>
+      </code>
 
-          このように、hx-syncを使用せずに、input要素に入力を行いすぐにformを送信すると、<br>
-          formからの/pageへのリクエストと、name_existsへのリクエストの、2つの並列リクエストがトリガーされます。<br>
-          これでは二つの要素の同期がとれません。<br>
-          しかし、hx-sync="closest form:abort"を使用すると、<br>
-          フォームのリクエストを監視し、`のリクエストを中止します<br><br>
+      このように、hx-syncを使用せずに、input要素に入力を行いすぐにformを送信すると、<br />
+      formからの/pageへのリクエストと、name_existsへのリクエストの、2つの並列リクエストがトリガーされます。<br />
+      これでは二つの要素の同期がとれません。<br />
+      しかし、hx-sync="closest form:abort"を使用すると、<br />
+      フォームのリクエストを監視し、`のリクエストを中止します<br /><br />
 
-          <code>
-            <pre style="background: black; color: white;">
+      <code>
+        <pre style="background: black; color: white">
 
-  &lt;form hx-post="/page"&gt;
-  &lt;input id="name" name="name" type="text"
-        hx-post="/name_exists"
-        hx-trigger="change"
-        hx-sync="closest form:abort"
+    &lt;form hx-post="/page"&gt;
+    &lt;input id="name" name="name" type="text"
+          hx-post="/name_exists"
+          hx-trigger="change"
+          hx-sync="closest form:abort"
     &gt;
     &lt;button type="submit"&gt;変更&lt;/button&gt;
     &lt;/form&gt;
 
-            </pre>
-          </code>
+        </pre>
+      </code>
 
-          hx-sync="closest form:abort"<br>
-          この属性は、同期の動作を制御します。<br>
-          この場合、closest form（最も近いフォーム）の中で新しいリクエストが開始されたときに既存のリクエストをabort（中止）することを意味します。<br>
-          これにより、同じフォーム内で複数のリクエストが同時に実行されないようにします。
-
-        </div>
-    </body>
+      hx-sync="closest form:abort"<br />
+      この属性は、同期の動作を制御します。<br />
+      この場合、closest
+      form（最も近いフォーム）の中で新しいリクエストが開始されたときに既存のリクエストをabort（中止）することを意味します。<br />
+      これにより、同じフォーム内で複数のリクエストが同時に実行されないようにします。
+    </div>
+  </body>
 </html>

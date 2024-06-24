@@ -46,7 +46,7 @@ h1 {
   background: white;
   max-width: 100%;
   overflow: scroll;
-  height: auto;
+  height: 80vh;
 }
 .container-inner {
   width: 90vw;

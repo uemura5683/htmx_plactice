@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="utf-8">
-        <title>リクエストインジケーター</title>
-        <script src="https://unpkg.com/htmx.org@1.9.11"></script>
-    </head>
-    <body>
-        <h2>
-            <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%B1%E3%83%BC%E3%82%BF%E3%83%BC">
-                リクエストインジケーター
-            </a>
-        </h2>
-        <div>
-            htmx-requestクラスを別の要素に追加したい場合は、 CSSセレクターでhx-indicator属性を使用して追加できる。
-        </div>
-        <code>
-            <pre style="background: black; color: white;">
+  <head>
+    <meta charset="utf-8" />
+    <title>リクエストインジケーター</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%B1%E3%83%BC%E3%82%BF%E3%83%BC"
+      >
+        リクエストインジケーター
+      </a>
+    </h2>
+    <div>
+      htmx-requestクラスを別の要素に追加したい場合は、<br />
+      CSSセレクターでhx-indicator属性を使用して追加できる。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
 
     .htmx-indicator{
         display:none;
@@ -34,8 +37,7 @@
         &lt;img id="indicator" class="htmx-indicator" src="/spinner.gif"/&gt;
     &lt;/div&gt;
 
-            </pre>
-        </code>
-
-    </body>
+      </pre>
+    </code>
+  </body>
 </html>
