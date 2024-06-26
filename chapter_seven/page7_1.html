@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>ダイアログの表示</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%80%E3%82%A4%E3%82%A2%E3%83%AD%E3%82%B0%E3%81%AE%E8%A1%A8%E7%A4%BA"
+      >
+        ダイアログの表示
+      </a>
+    </h2>
+    <div>
+      以下のようにhx-confirm="xxxx"とすると以下のようなアラートを出せる。
+      <code>
+        <pre style="background: black; color: white">
+
+    &lt;button hx-confirm="xxxx"&gt;
+      押すな危険！
+    &lt;/button&gt;
+        </pre>
+      </code>
+      <button
+        hx-get="https://jsonplaceholder.typicode.com/posts/1"
+        hx-trigger="click"
+        hx-target="#target"
+        hx-confirm="本当に押してもいいですか？？"
+      >
+        押すな危険！
+      </button>
+    </div>
+  </body>
+</html>
