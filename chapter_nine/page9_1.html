@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Boosting</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E7%B6%99%E6%89%BF"
+      >
+        Boosting
+      </a>
+    </h2>
+    <div>
+      hx-boostを使用すると、通常のaタグやformタグを「ブースト」して、代わりに
+      AJAX を使用できる。<br />
+      ユーザが JavaScript
+      を有効にしていない場合でも、サイトは引き続き動作する。<br />
+      ( Progressive enhancement - Wikipedia)<br />
+      <br />
+      hx-boost="true"とすることで、ページ全体をロードすることなく、bodyタグの中身だけを置き換えることができる。<br />
+      (SPAの実現) また、後述のhx-push-urlと一緒に使うことが多い。<br />
+      <code>
+        <pre style="background: black; color: white">
+
+    &lt;script src="https://unpkg.com/htmx.org@1.9.10"&gt;&lt;/script&gt;
+
+    &lt;div hx-boost="true"&gt;
+      &lt;a hx-post="/sample"&gt;Blog&lt;/a&gt;
+    &lt;/div&gt;
+
+        </pre>
+      </code>
+      <br />
+      formタグの場合は以下のようになる。<br />
+      <code>
+        <pre style="background: black; color: white">
+
+    &lt;form hx-boost="true" action="/sample" method="post"&gt;
+      &lt;input name="username" type="text" placeholder="ユーザネームを入力"&gt;
+      &lt;button&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+
+        </pre>
+      </code>
+
+      <form
+        hx-boost="true"
+        action="https://jsonplaceholder.typicode.com/posts/1"
+        method="post"
+      >
+        <input name="username" type="text" placeholder="ユーザネームを入力" />
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

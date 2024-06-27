@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Requests & Responses</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#requests--responses">
+        Requests & Responses
+      </a>
+    </h2>
+    <div>
+      HTMXでは、サーバからのレスポンス内容でDOMをスワップするのが多いが、スワップせずに、ステータスコードによってイベントを発火することもできる。<br />
+      <br />
+      404や501 : htmx:responseError<br />
+      接続エラー : htmx:sendError<br />
+      <br />
+    
+      <h3>リクエストヘッダー</h3>
+      <p>htmxによるリクエストでは、サーバー側で多数の HTTP ヘッダーにアクセスできる</p>
+      <div>
+        オプション	ー	説明<br />
+        HX-Boosted	ー	リクエストがhx-boostを使用する要素経由であることを示す<br />
+        HX-Current-URL	ー	ブラウザの現在の URL<br />
+        HX-History-Restore-Request	ー	リクエストがローカル履歴キャッシュでのミス後の履歴復元の場合はtrue<br />
+        HX-Prompt	ー	hx-promptに対するユーザーのレスポンス<br />
+        HX-Request	ー	常にtrue<br />
+        HX-Target	ー	ターゲット要素のID<br />
+        HX-Trigger-Name	ー	発火した要素の名前<br />
+        HX-Trigger	ー	発火した要素のID<br />
+        Access-Control-Allow-Headers	ー	CORSのヘッダー<br />
+      </div>
+
+      <h3>レスポンスヘッダー</h3>
+      <p>リクエストの同様、サーバ側でレスポンス返す時に、持たせられるheaderオプション。</p>
+
+      <div>
+        オプション	ー	説明<br />
+        HX-Location	ー	スーパーリロードをしないクライアント側のリダイレクトを実行する<br />
+        HX-Push-Url	ー	新しい URL を履歴スタックにプッシュする<br />
+        HX-Redirect	ー	クライアント側のリダイレクトをできるようにする<br />
+        HX-Refresh	ー	「true」に設定すると、クライアント側でページが完全に更新される<br />
+        HX-Replace-Url	ー	ロケーションバーの現在の URL を置き換える<br />
+        HX-Reswap	ー	レスポンスを交換する方法を指定できる。可能な値については、hx-swap を参照。<br />
+        HX-Retarget	ー	コンテンツ更新のターゲットをページ上の別の要素に更新する CSS セレクター<br />
+        HX-Reselect	ー	レスポンスのどの部分を交換に使用するかを選択できる CSS セレクター。<br />
+        hx-select	ー	トリガー要素の既存のものをオーバーライドする<br />
+        HX-Trigger	ー	クライアント側のイベントをトリガーできる<br />
+        HX-Trigger-After-Settle	ー	解決ステップの後にクライアント側イベントをトリガーできる<br />
+        HX-Trigger-After-Swap	ー	スワップステップの後にクライアント側イベントをトリガーする<br />
+        Access-Control-Expose-Headers	ー	CORSのヘッダー<br /><br />
+      </div>
+
+      <div>  
+        htmx 経由でフォームを送信すると、 Post/Redirect/Get Patternが必要なくなるというメリットがある。<br />
+        サーバー上で POST リクエストが正常に処理された後は、<br />
+        302ステータスコードを返す必要はない。<br /><br />
+      </div>
+    </div>
+  </body>
+</html>

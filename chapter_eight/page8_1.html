@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>継承</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E7%B6%99%E6%89%BF"
+      >
+        継承
+      </a>
+    </h2>
+    <div>
+      htmxの一部の属性は継承される。<br />
+      以下の例では親のdivにhx-confirmを付加すると(ボタンA, ボタンB)、<br />
+      子のbuttonもその属性を受け継ぎアラートが出るようになる。 <br />
+      継承したくない場合(ボタンC)はhx-confirm="unset"と設定する。
+      <code>
+        <pre style="background: black; color: white">
+
+    &lt;div hx-confirm="ファイナルアンサー？"&gt;
+      &lt;p&gt;好きなボタンを選んでね&lt;/p&gt;
+      &lt;button hx-delete="https://jsonplaceholder.typicode.com/posts/1"&gt;
+        ボタンA
+      &lt;/button&gt;
+      &lt;button hx-post="https://jsonplaceholder.typicode.com/posts/1"&gt;
+        ボタンB
+      &lt;/button&gt;
+      &lt;button hx-confirm="unset" hx-get="/"&gt;
+        ボタンC
+      &lt;/button&gt;
+    &lt;/div&gt;
+
+        </pre>
+      </code>
+
+      <h2>継承サンプル</h2>
+      <div hx-confirm="ファイナルアンサー？">
+        <p>好きなボタンを選んでね</p>
+        <button hx-delete="https://jsonplaceholder.typicode.com/posts/1">
+          ボタンA
+        </button>
+        <button hx-post="https://jsonplaceholder.typicode.com/posts/1">
+          ボタンB
+        </button>
+        <button hx-confirm="unset" hx-get="/">ボタンC</button>
+      </div>
+    </div>
+  </body>
+</html>
