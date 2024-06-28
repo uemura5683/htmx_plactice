@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>バリデーション</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%90%E3%83%AA%E3%83%87%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3"
+      >
+        バリデーション
+      </a>
+    </h2>
+    <div>
+      イベント	ー	説明<br>
+      htmx:validation:validate	ー	要素のcheckValidity() が呼ばれる前に呼び出される。カスタムバリデーションを追加するために使用する。<br>
+      htmx:validation:failed	ー	checkValidity() が false を返し、無効な入力を示す場合に呼び出される<br>
+      htmx:validation:halted	ー	バリデーションエラーによりリクエストが発行されない場合に呼び出されます。具体的なエラーは event.detail.errors オブジェクトで見つけることができる<br>
+      <br>
+      htmx:validation:validateイベントをキャッチして、入力値がfooになっているかhx-on属性を使用した入力の例です。<br>
+      <br>
+
+      <h2>バリデーション Sample</h2>
+
+      <p id="target">送信できたらここが変わるよ</p>
+      
+      <form id="example-form" hx-post="https://jsonplaceholder.typicode.com/posts" hx-target="#target">
+        <input name="example"
+          onkeyup="this.setCustomValidity('') // 入力したらバリデーションがリセットされる "
+          hx-on:htmx:validation:validate="if(this.value != 'ペンギン') {
+            this.setCustomValidity('ペンギンと入力しください')
+            htmx.find('#example-form').reportValidity()
+          }">
+        <button class="btn btn-default">送信</button>
+      </form>
+
+
+    </div>
+  </body>
+</html>

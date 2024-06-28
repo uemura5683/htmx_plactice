@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>History</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#history">
+        History
+      </a>
+    </h2>
+    <div>
+      hx-push-url属性を使うとHistory<br />
+      APIを利用することが可能となり、URLの動的な置換やブラウザのバックボタンの使用などが可能になる。<br />
+      以下のsample.htmlをブラウザで開くと、アドレスバーにhttps://jsonplaceholder.typicode.com/posts/1が追加され、ブラウザの履歴に追加される。<br />
+      <code>
+        <pre style="background: black; color: white">
+
+    &lt;script src="https://unpkg.com/htmx.org@1.9.10"&gt;&lt;/script&gt;
+
+    &lt;p&gt;以下をクリックするとブラウザのアドレスバーのURLが変わります。&lt;/p&gt;
+    &lt;a hx-put="https://jsonplaceholder.typicode.com/posts/1" hx-push-url="true"&gt;クリック&lt;/a&gt;
+
+        </pre>
+      </code>
+      <br />
+      <div hx-get="page10_1/index.html" hx-push-url="true" hx-target="this">
+        続きはこちら
+      </div>
+      <br>
+      hx-history-elt属性を設定すると、<br>
+      ビゲーション中にページの状態をスナップショットおよび復元するために使用される要素を指定できる。<br>
+      デフォルトはbodyとなる。子要素に絞り込むことも可能。<br>
+      <code>
+        <pre style="background: black; color: white">
+
+    &lt;div id="content" hx-history-elt&gt;
+      ・・・
+    &lt;/div&gt;
+
+        </pre>
+      </code>
+
+      hx-history=falseとすると、localStorageのキャッシュに保存されないようにできる。<br>
+
+    </div>
+  </body>
+</html>
