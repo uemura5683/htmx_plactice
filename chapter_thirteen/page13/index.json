@@ -1,0 +1,18 @@
+{
+    "content": [
+      {
+        "alt": "css",
+        "description": "HTML + CSSでリアルな炎（アニメーション付）を作る",
+        "image": "https://raw.githubusercontent.com/uemura5683/gatsby-typescript/main/src/images/skill/css.png",
+        "type": "qiita",
+        "url": "https://qiita.com/nishihara_zari/items/9a4b3112ed69e02ff569"
+      },
+      {
+        "alt": "css",
+        "description": "CSSで「ひし形」を作る３つの方法！正方形じゃないダイヤモンド型を描くには？",
+        "image": "https://raw.githubusercontent.com/uemura5683/gatsby-typescript/main/src/images/skill/css.png",
+        "type": "blogsite",
+        "url": "https://kouhekikyozou.com/css_diamond_shape"
+      }
+    ]
+  }

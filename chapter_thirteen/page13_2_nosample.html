@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>json-enc</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD"
+      >
+        json-enc
+      </a>
+    </h2>
+    <div>
+      <code>
+        <pre style="background: black; color: white">
+
+    以下を追加する。
+
+    &lt;script src="https://unpkg.com/htmx.org/dist/ext/json-enc.js"&gt;&lt;/script&gt;
+    以下のようにすると、jsonで
+    
+    &lt;div hx-post='/chapter_thirteen/page13/index.html' hx-ext='json-enc'&gt;クリック&lt;/div&gt;
+        </pre>
+      </code>
+      <div hx-post='/chapter_thirteen/page13/index.json' hx-ext='json-enc' hx-target="#response" >クリック</div>
+      <div id="response"></div>
+    </div>
+  </body>
+</html>
