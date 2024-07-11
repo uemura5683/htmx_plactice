@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>WebSockets & SSE</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#websockets--sse"
+      >
+        WebSockets & SSE
+      </a>
+    </h2>
+    <div>
+      WebSocketはサーバ側とユーザ側が常にオンライン状態を維持することによって、双方向通信を実現できる。リアルタイムに情報を共有できるチャットアプリケーションなどで用いられる。<br />
+      SSE(Server-Sent
+      Events)とは、サーバー送信イベントと呼ばれ、Webブラウザーとサーバー間の一方向の非同期通信方法のこと。SSEは、長時間接続でもリソース消費が少ないため、リアルタイムな通信に向いている。<br />
+    </div>
+    <h2>SSE</h2>
+    <div>導入するには、まず以下スクリプトを読み込む。</div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;script src="https://unpkg.com/htmx.org/dist/ext/sse.js"&gt;&lt;/script&gt;
+      </pre>
+    </code>
+    <div>
+      hx-ext="sse"を指定できるようになり、SSEを使えるようになる。<br>
+      SSEでは、以下2つの属性が使えるようになる。<br>
+      <br>
+      属性	説明<br>
+      sse-connect=""	接続先URL<br>
+      sse-swap=""	DOM にスワップするメッセージの名前<br>
+      `hx-trigger="sse:"でもOK<br><br>
+      以下のように指定する。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    属性	説明
+    ws-connect="&lt;url&gt;"
+    ws-connect="&lt;prefix&gt;:&lt;url&gt;"	WebSocket接続先URL
+    ws-send	要素のトリガー値に基づいて、最も近いWebSocketにメッセージを送信する。
+    以下のように指定する。
+      </pre>
+    </code>
+    <div>以下のように指定する。</div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;div hx-ext="sse" sse-connect="/chatroom" sse-swap="message"&gt;
+      Contents of this box will be updated in real time
+      with every SSE message received from the chatroom.
+    &lt;/div&gt;
+
+      </pre>
+    </code>
+
+  </body>
+</html>
