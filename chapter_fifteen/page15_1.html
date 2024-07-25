@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>ロギング</title>
+    <link rel="stylesheet" href="css.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#websockets--sse"
+      >
+        ロギング
+      </a>
+    </h2>
+    <div>
+      HTMXは多くの拡張イベントがあり、それらはロギングとしても役立つ。<br />
+      <br />
+      例えば、特定のhtmxイベントを追加したい場合は以下のようにする。<br />
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      document.body.addEventListener('htmx:load', function(evt) {
+        myJavascriptLib.init(evt.detail.elt);
+      });
+      </pre>
+    </code>
+    <div>htmx ヘルパー関数で実現することもできる。</div>
+    <code>
+      <pre style="background: black; color: white">
+
+      htmx.on("htmx:load", function(evt) {
+        myJavascriptLib.init(evt.detail.elt);
+      });
+      </pre>
+    </code>
+    <h3>3rdパーティライブラリの初期化</h3>
+    <div>
+      htmx:loadを使うときにライブラリの初期化をするのは、非常に一般的であるため、htmxにはヘルパー関数が用意されている。<br />
+      上記の例とやっていることは同じだが、こちらの方が多少綺麗にかける。<br />
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      htmx.onLoad(function(target) {
+        myJavascriptLib.init(target);
+      });
+      </pre>
+    </code>
+    <h3>イベントを使用してリクエストを構成する</h3>
+    <div>
+      htmx:configRequestイベントを使うと、AJAXリクエストが発行される前に、JAX
+      リクエストを変更できる。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      document.body.addEventListener('htmx:configRequest', function(evt) {
+        evt.detail.parameters['auth_token'] = getAuthToken(); // add a new parameter into the request
+        evt.detail.headers['Authentication-Token'] = getAuthToken(); // add a new header into the request
+      });
+      </pre>
+    </code>
+    <h3>イベントによるスワップ動作の変更</h3>
+    <div>
+      htmx:beforeSwapイベントを使うと、htmxのスワップの動作を変更できる。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        document.body.addEventListener('htmx:beforeSwap', function(evt) {
+          if(evt.detail.xhr.status === 404){
+              // alert the user when a 404 occurs (maybe use a nicer mechanism than alert())
+              alert("Error: Could Not Find Resource");
+          } else if(evt.detail.xhr.status === 422){
+              // allow 422 responses to swap as we are using this as a signal that
+              // a form was submitted with bad data and want to rerender with the
+              // errors
+              //
+              // set isError to false to avoid error logging in console
+              evt.detail.shouldSwap = true;
+              evt.detail.isError = false;
+          } else if(evt.detail.xhr.status === 418){
+              // if the response code 418 (I'm a teapot) is returned, retarget the
+              // content of the response to the element with the id `teapot`
+              evt.detail.shouldSwap = true;
+              evt.detail.target = htmx.find("#teapot");
+          }
+      });
+      </pre>
+    </code>
+  </body>
+</html>

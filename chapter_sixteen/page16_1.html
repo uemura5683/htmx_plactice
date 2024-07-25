@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>デバッグ</title>
+    <link rel="stylesheet" href="css.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%87%E3%83%90%E3%83%83%E3%82%B0"
+      >
+        デバッグ
+      </a>
+    </h2>
+    <div>
+      htmxを用いたイベント駆動型プログラミングは、デバッグが難しくなる可能性がある。<br>
+      <br>
+      まず、一番シンプルなデバッグ方法は以下のようにする。<br>
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        htmx.logAll();
+      </pre>
+    </code>
+    <div>
+      DOM 要素がトリガーとして使用するためにどのイベントを起動しているのかがわからないときは、monitorEvents()をブラウザコンソールで叩くと、イベントを調べられる。(ただし、コンソールでしか動かない)<br>
+      <br>
+      例えば、以下のようにすると、対象のIDを持つ要素で発生しているすべてのイベントを確認できる。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        monitorEvents(htmx.find("#sample"));
+      </pre>
+    </code>
+    <h3>デモ環境の作成</h3>
+    <div>
+      jsfiddleやcodepenなどを使うとデモ環境を作成できる。<br>
+      <br>
+      デモ環境を作成するには、まず以下のスクリプトを貼り付ける。<br>
+      これは htmx のlatestと Hyperscript を常に読み込むスクリプトである。<br>
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        &lt;script src="https://demo.htmx.org"&gt;&lt;/script&gt;
+      </pre>
+    </code>
+    <div>
+      そして、URL属性をした templateタグ を追加し、そこにモックしたレスポンスを書くことができる。<br>
+      <br>
+      以下のデモコードはクリックした数をカウントアップする。<br>
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        &lt;button hx-post="/foo" hx-target="#result"&gt;
+          Count Up
+        &lt;/button&gt;
+        &lt;output id="result"&gt;&lt;/output&gt;
+      
+        &lt;script&gt;
+          globalInt = 0; // グローバル変数
+        &lt;/script&gt;
+        &lt;template url="/foo" delay="500"&gt;
+          ${globalInt++}
+        &lt;/template&gt;        
+      </pre>
+    </code>
+    <div>
+      以下は、上記コードを実際にCodePenで動かしたものである。
+    </div>
+
+    <button hx-post="/foo" hx-target="#result">
+      Count Up
+    </button>
+    <output id="result"></output>
+    
+    <script>
+      globalInt = 0;
+    </script>
+    <template url="/foo" delay="500">
+      ${globalInt++}
+    </template>    
+
+  </body>
+</html>
