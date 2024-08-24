@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>リクエストインジケーター</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%B1%E3%83%BC%E3%82%BF%E3%83%BC"
+      >
+        リクエストインジケーター
+      </a>
+    </h2>
+    <div>
+      htmx-requestクラスを別の要素に追加したい場合は、<br />
+      CSSセレクターでhx-indicator属性を使用して追加できる。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    .htmx-indicator{
+        display:none;
+    }
+    .htmx-request .htmx-indicator{
+        display:inline;
+    }
+    .htmx-request.htmx-indicator{
+        display:inline;
+    }      
+
+    &lt;div&gt;
+        &lt;button hx-get="/sample" hx-indicator="#indicator"&gt;
+            Click Me!
+        &lt;/button&gt;
+        &lt;img id="indicator" class="htmx-indicator" src="/spinner.gif"/&gt;
+    &lt;/div&gt;
+
+      </pre>
+    </code>
+    <style>
+      .htmx-indicator{
+        display:none;
+      }
+      .htmx-request .htmx-indicator{
+        display:inline;
+      }
+      .htmx-request.htmx-indicator{
+        display:inline;
+      }
+    </style>
+    <div>
+      <button hx-get="https://jsonplaceholder.typicode.com/posts/1" hx-indicator="#indicator">
+          Click Me!
+      </button>
+      <img
+        id="indicator"
+        class="htmx-indicator"
+        src="data:image/svg+xml,%3Csvg width='58' height='58' viewBox='0 0 58 58' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg transform='translate(2 1)' stroke='%23000' stroke-width='1.5'%3E%3Ccircle cx='42.601' cy='11.462' r='5' fill-opacity='1' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='1;0;0;0;0;0;0;0' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='49.063' cy='27.063' r='5' fill-opacity='0' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='0;1;0;0;0;0;0;0' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='42.601' cy='42.663' r='5' fill-opacity='0' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='0;0;1;0;0;0;0;0' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='27' cy='49.125' r='5' fill-opacity='0' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='0;0;0;1;0;0;0;0' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='11.399' cy='42.663' r='5' fill-opacity='0' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='0;0;0;0;1;0;0;0' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='4.938' cy='27.063' r='5' fill-opacity='0' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='0;0;0;0;0;1;0;0' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='11.399' cy='11.462' r='5' fill-opacity='0' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='0;0;0;0;0;0;1;0' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3Ccircle cx='27' cy='5' r='5' fill-opacity='0' fill='%23000'%3E%3Canimate attributeName='fill-opacity' begin='0s' dur='1.3s' values='0;0;0;0;0;0;0;1' calcMode='linear' repeatCount='indefinite' /%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E"
+      />
+    </div>
+
+  </body>
+</html>
