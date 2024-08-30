@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>htmxの設定・サーバサイド・より発展的な実装例</title>
+    <link rel="stylesheet" href="css.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#htmx%E3%81%AE%E8%A8%AD%E5%AE%9A"
+      >
+        htmxの設定・サーバサイド・より発展的な実装例
+      </a>
+    </h2>
+    <h3>htmxの設定</h3>
+    <div>
+      htmxには色々な設定オプションがある。<br>
+      <a href="https://htmx.org/docs/#config" target="_blank">Configuring htmx</a>を参照<br><br>
+      JavaScriptで直接設定することも、以下のようにmetaタグで導入することもできる。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      &lt;meta name="htmx-config" content='{"defaultSwapStyle":"outerHTML"}'&gt;
+      </pre>
+    </code>
+    <h3>サーバサイド</h3>
+    <div>
+      GitHubには、htmxとサーバー側のフレームワークを統合している例がたくさんある。<br><br>
+      <a href="https://htmx.org/server-examples/" target="_blank">htmx ~ Server-Side Examples</a>にたくさんsampleが記載されている。
+    </div>
+    <h3>より発展的な実装例</h3>    
+    <div>
+      <a href="https://htmx.org/examples/" target="_blank">htmx ~ Examples</a>にはhtmxを使用したさまざまな例が挙げられている。
+    </div>    
+  </body>
+</html>

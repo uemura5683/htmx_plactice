@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>他のツールとHTMX統合</title>
+    <link rel="stylesheet" href="css.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a
+        href="https://qiita.com/twrcd1227/items/7bce18167fb02ec22729#%E4%BB%96%E3%81%AE%E3%83%84%E3%83%BC%E3%83%AB%E3%81%A8htmx%E7%B5%B1%E5%90%88"
+      >
+        他のツールとHTMX統合
+      </a>
+    </h2>
+    <div>
+      以下はhtmxとの相性がいい。<br>
+      <br>
+      VanillaJS　: ピュアなjavascript<br>
+      AlpineJS : scriptタグで導入できる<br>
+      hyperscript : htmxを作成した同じチームによって作成された言語。<br>
+      jQuery<br>
+    </div>
+    <h3>hx-on</h3>
+    <div>
+      htmlでは、一般的に<a href="https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers#using_onevent_properties" target="_blank">onevent</a>と以下のようにインラインスクリプトを組み込む。しかし、<a href="https://www.w3schools.com/tags/ref_eventattributes.asp" target="_blank">特定のDOMイベント</a>しか組み込めないというデメリットがある。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      &lt;button onclick="alert('You clicked me!')"&gt;
+          Click Me!
+      &lt;/button&gt;
+      </pre>
+    </code>
+    <div>
+      そこで、htmxではhx-on属性を使う。<br>
+      <br>
+      以下のようにhx-on:イベント名="スクリプト"の形で使用する。。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      &lt;button hx-on:click="alert('You clicked me!')"&gt;
+          Click Me!
+      &lt;/button&gt;
+      </pre>
+    </code>
+    <div>
+      htmxの拡張イベントのhtmx:config-requestを使うと、クリックするとリクエストにパラメータを追加するhtmxボタンを実現できる。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        &lt;button
+            hx-post="/example"
+            hx-on:htmx:config-request="event.detail.parameters.example = 'Hello Scripting!'"&gt;
+          Post Me!
+        &lt;/button&gt;
+      </pre>
+    </code>
+    <h3>サードパーティのライブラリと組み合わせる</h3>
+    <div>
+      先ほど jQuery　などと相性が良いことを述べたが、他にも
+      例えば、SortableJSというライブラリと組み合わせるとSortable のような例が簡単に実現できる。
+    </div>
+  </body>
+</html>
