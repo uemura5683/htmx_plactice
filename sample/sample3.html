@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>クリックして読み込む</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/click-to-load/" target="_blank">
+        クリックして読み込む
+      </a>
+    </h2>
+    <div>
+      この例では、データ
+      テーブルでクリックして次のページを読み込む機能を実装する方法を示します。デモの要点は、最後の行です。<br />
+      <br />
+      (POSTリクエスト) に含めることで実現されます。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;tr id="replaceMe"&gt;
+      &lt;td colspan="3"&gt;
+        &lt;button
+            class='btn primary'
+            hx-get="/contacts/?page=2"
+            hx-target="#replaceMe"
+            hx-swap="outerHTML"
+        &gt;
+         Load More Agents...
+        &lt;img class="htmx-indicator" src="/img/bars.svg"&gt;
+        &lt;/button&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+
+      </pre>
+    </code>
+    <div>
+      この行には、行全体を次の結果ページ (次の結果ページを読み込むボタンを含む)
+      に置き換えるボタンが含まれています。
+    </div>
+  </body>
+</html>
