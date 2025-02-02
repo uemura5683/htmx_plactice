@@ -7,12 +7,54 @@
   </head>
   <body>
     <h2>
-      クリックして編集する
+      <a href="https://htmx.org/examples/click-to-edit/">
+        クリックして編集する
+      </a>
     </h2>
     <div>
-      <a href="https://htmx.org/examples/click-to-edit/" target="_blank">
-        https://htmx.org/examples/click-to-edit/
-      </a>
+      クリックして編集するパターンを使用すると、ページを更新せずにレコードの全部または一部をインラインで編集できるようになります。<br>
+      <br>
+      このパターンは、連絡先の詳細を表示するUIから始まります。divには、連絡先の編集UIを取得するボタンがあります。/contact/1/edit<br>
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+  &lt;div hx-target="this" hx-swap="outerHTML"&gt;
+    &lt;div&gt;&lt;label&gt;First Name&lt;/label&gt;: Joe&lt;/div&gt;
+    &lt;div&gt;&lt;label&gt;Last Name&lt;/label&gt;: Blow&lt;/div&gt;
+    &lt;div&gt;&lt;label&gt;Email&lt;/label&gt;: joe@blow.com&lt;/div&gt;
+    &lt;button hx-get="/contact/1/edit" class="btn primary"&gt;
+    Click To Edit
+    &lt;/button&gt;
+  &lt;/div&gt;
+      </pre>
+    </code>
+    <div>
+      連絡先を編集するために使用できるフォームを返します
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+  &lt;form hx-put="/contact/1" hx-target="this" hx-swap="outerHTML"&gt;
+    &lt;div&gt;
+      &lt;label&gt;First Name&lt;/label&gt;
+      &lt;input type="text" name="firstName" value="Joe"&gt;
+      &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label&gt;Last Name&lt;/label&gt;
+      &lt;input type="text" name="lastName" value="Blow"&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+      &lt;label&gt;Email Address&lt;/label&gt;
+      &lt;input type="email" name="email" value="joe@blow.com"&gt;
+    &lt;/div&gt;
+    &lt;button class="btn">Submit&lt;/button>
+    &lt;button class="btn" hx-get="/contact/1"&gt;Cancel&lt;/button&gt;
+  &lt;/form&gt;
+      </pre>
+    </code>
+    <div>
+      フォームは、通常の REST フル パターンに従って、PUTに戻ります。/contact/1
     </div>
   </body>
 </html>

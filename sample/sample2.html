@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>一括更新</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/bulk-update/" target="_blank">
+        一括更新
+      </a>
+    </h2>
+    <div>
+        このデモでは、行を選択して一括更新する一般的なパターンを実装する方法を示します。これは、テーブルの周りにフォームを配置し、テーブルにチェックボックスを配置し、チェックされた値をフォーム送信 (POSTリクエスト) に含めることで実現されます。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+  &lt;form id="checked-contacts"
+    hx-post="/users"
+    hx-swap="outerHTML settle:3s"
+    hx-target="#toast"&gt;
+    &lt;table&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Name</th>
+          &lt;th&gt;Email</th>
+          &lt;th&gt;Active</th>
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody id="tbody"&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Joe Smith&lt;/td&gt;
+          &lt;td&gt;joe@smith.org&lt;/td&gt;
+          &lt;td&gt;&lt;input type="checkbox" name="active:joe@smith.org"&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+    &lt;input type="submit" value="Bulk Update" class="btn primary"&gt;
+    &lt;span id="toast"&gt;&lt;/span&gt;
+  &lt;/form&gt;
+
+      </pre>
+    </code>
+
+    <div>
+        サーバーは、チェックボックスの値に基づいてステータスを一括更新します。更新に関する短いトースト メッセージで応答してユーザーに通知し、アクセシビリティのために ARIA を使用して更新を丁寧に通知します。
+    </div>
+
+    <code>
+        <pre style="background: black; color: white">
+
+    #toast.htmx-settling {
+      opacity: 100;
+    }
+    
+    #toast {
+      background: #E1F0DA;
+      opacity: 0;
+      transition: opacity 3s ease-out;
+    }
+        </pre>
+    </code>
+    <div>
+      素晴らしいのは、HTML フォーム入力がすでに独自の状態を管理しているため、ユーザー テーブルの一部を再レンダリングする必要がないことです。アクティブなユーザーはすでにチェックされており、非アクティブなユーザーはチェックされていません。<br>
+      <br>
+      このコードの動作例を以下に示します。
+    </div>
+  </body>
+</html>
