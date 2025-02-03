@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>行を削除</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/delete-row/" target="_blank">
+        行を削除
+      </a>
+    </h2>
+    <div>
+      この例では、完了時にテーブル行を削除する削除ボタンを実装する方法を示します。まず、テーブル本体を見てみましょう。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;tr id="replaceMe"&gt;
+
+    &lt;table class="table delete-row-example"&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+        &lt;th&gt;&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody hx-confirm="Are you sure?" hx-target="closest tr" hx-swap="outerHTML swap:1s"&gt;
+        ...
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+
+      </pre>
+    </code>
+
+    <div>
+      テーブル本体には、hx-confirm削除アクションを確認するための属性があります。また、closest
+      trすべてのボタンに対して、ターゲットを
+      、つまり最も近いテーブル行に設定します (hx-target は DOM
+      内の親から継承されます)。 の swap
+      指定では、hx-swapターゲット全体をスワップアウトし、応答を受信して​​から 1
+      秒待つように指定しています。この最後の部分は、次の CSS
+      を使用できるようにするためです。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+  
+    tr.htmx-swapping td {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+  
+      </pre>
+    </code>
+
+    <div>
+      行をスワップ/削除する前にフェードアウトします。<br />
+      <br />
+      各行には、 サーバーから行を削除する要求をhx-delete発行するための URL
+      を含む属性を持つボタンがあります。この要求は、行を何も置き換えないことを示すステータス
+      コードと空のコンテンツで応答します。DELETE200
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;tr&gt;
+      &lt;td&gt;Angie MacDowell&lt;/td&gt;
+      &lt;td&gt;angie@macdowell.org&lt;/td&gt;
+      &lt;td&gt;Active&lt;/td&gt;
+      &lt;td&gt;
+        &lt;button class="btn danger" hx-delete="/contact/1"&gt;
+          Delete
+        &lt;/button&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    
+      </pre>
+    </code>
+  </body>
+</html>
