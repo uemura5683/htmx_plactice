@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>遅延読み込み</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/lazy-load/" target="_blank">
+        遅延読み込み
+      </a>
+    </h2>
+    <div>
+      この例では、ページ上の要素を遅延ロードする方法を示します。次のような初期状態から始めます。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;div hx-get="/graph" hx-trigger="load"&gt;
+        &lt;img  alt="Result loading..." class="htmx-indicator" width="150" src="/img/bars.svg"/&gt;
+    &lt;/div&gt;
+
+      </pre>
+    </code>
+
+    <div>
+      グラフをロードしているときに進行状況インジケーターが表示されます。その後、グラフがロードされ、CSS
+      トランジションによって徐々にフェードアウトして表示されます。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+  
+  .htmx-settling img {
+    opacity: 0;
+  }
+  img {
+    transition: opacity 300ms ease-in;
+  }
+  
+      </pre>
+    </code>
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>インライン検証</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/inline-validation/" target="_blank">
+        インライン検証
+      </a>
+    </h2>
+    <div>
+      この例では、インライン フィールド検証 (この場合は電子メール アドレス)
+      を実行する方法を示します。これを行うには、検証する値をサーバーに返して検証結果で
+      DOM を更新する入力フォームを作成するPOST必要があります。<br />
+      <br />
+      このフォームから始めます:<br />
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;h3&gt;Signup Form&lt;/h3&gt;
+    &lt;form hx-post="/contact"&gt;
+      &lt;div hx-target="this" hx-swap="outerHTML"&gt;
+        &lt;label&gt;Email Address&lt;/label&gt;
+        &lt;input name="email" hx-post="/contact/email" hx-indicator="#ind"&gt;
+        &lt;img id="ind" src="/img/bars.svg" class="htmx-indicator"/&gt;
+      &lt;/div&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label&gt;First Name&lt;/label&gt;
+        &lt;input type="text" class="form-control" name="firstName"&gt;
+      &lt;/div&gt;
+      &lt;div class="form-group"&gt;
+        &lt;label&gt;Last Name&lt;/label&gt;
+        &lt;input type="text" class="form-control" name="lastName"&gt;
+      &lt;/div&gt;
+      &lt;button class="btn primary"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+
+      </pre>
+    </code>
+
+    <div>
+      フォームの最初の div
+      は、それ自体をリクエストのターゲットとして設定し、outerHTML
+      スワップ戦略を指定しているため、レスポンスによって完全に置き換えられることに注意してください。次に、入力は、
+      イベントが発生したときに検証を行うようPOSTに指定します(これは入力のデフォルトです)。また、リクエストのインジケーターも指定します。/contact/emailchanged<br />
+      <br />
+      リクエストが発生すると、外側の div
+      を置き換える部分を返します。次のようになります。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+  
+    &lt;div hx-target="this" hx-swap="outerHTML" class="error"&gt;
+        &lt;label&gt;Email Address&lt;/label&gt;
+        &lt;input name="email" hx-post="/contact/email" hx-indicator="#ind" value="test@foo.com"&gt;
+        &lt;img id="ind" src="/img/bars.svg" class="htmx-indicator"/&gt;
+        &lt;div class='error-message'&gt;That email is already taken.  Please enter another email.&lt;/div&gt;
+    &lt;/div&gt;              
+  
+      </pre>
+    </code>
+
+    <div>
+      この div にはerrorクラスが注釈付けされており、エラー
+      メッセージ要素が含まれていることに注意してください。<br />
+      <br />
+      このフォームは、次の CSS を使用して軽くスタイル設定できます。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+
+    .error-message {
+      color:red;
+    }
+    .error input {
+      box-shadow: 0 0 3px #CC0000;
+    }
+    .valid input {
+      box-shadow: 0 0 3px #36cc00;
+    }
+            
+      </pre>
+    </code>
+
+    <div>
+      より良い視覚的なフィードバックを提供するため。<br />
+      <br />
+      以下はこの例の実際のデモです。受け入れられるメールは
+      のみですtest@test.com。
+    </div>
+  </body>
+</html>
