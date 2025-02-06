@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>無限スクロール</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/infinite-scroll/" target="_blank"> 無限スクロール </a>
+    </h2>
+    <div>
+      無限スクロール
+      パターンは、ユーザーのスクロール操作時にコンテンツを動的に読み込む方法を提供します。<br />
+      <br />
+      最後の行（またはコンテンツの最後の要素）に注目しましょう。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;tr hx-get="/contacts/?page=2"
+        hx-trigger="revealed"
+        hx-swap="afterend"&gt;
+        &lt;td&gt;Agent Smith&lt;/td&gt;
+        &lt;td&gt;void29@null.org&lt;/td&gt;
+        &lt;td&gt;55F49448C0&lt;/td&gt;
+    &lt;/tr&gt;
+
+      </pre>
+    </code>
+
+    <div>
+      この最後の要素にはリスナーが含まれており、<br />
+      スクロールして表示されるとリクエストがトリガーされます。<br />
+      その後に結果が追加されます。結果の最後の要素自体に、次の結果ページを読み込むリスナーが含まれます。<br />
+      <br />
+      revealed- 要素がビューポートにスクロールされたときにトリガーされます
+      (遅延読み込みにも役立ちます)。 <br />
+      をoverflowCSS 内で使用する場合は、の代わりにoverflow-y:
+      scrollを使用する必要があります。intersect oncerevealed
+    </div>
+  </body>
+</html>
