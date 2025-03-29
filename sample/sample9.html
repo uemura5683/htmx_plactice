@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>アクティブ検索</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/active-search/" target="_blank">
+        アクティブ検索
+      </a>
+    </h2>
+    <div>
+        この例では、ユーザーがテキストを入力すると、連絡先データベースがアクティブに検索されます。<br>
+        <br>
+        検索入力と空のテーブルから始めます。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      &lt;h3&gt; 
+        Search Contacts 
+        &lt;span class="htmx-indicator"&gt; 
+          &lt;img src="/img/bars.svg"/&gt; Searching... 
+         &lt;/span&gt; 
+      &lt;/h3&gt;
+      &lt;input class="form-control" type="search" 
+        name="search" placeholder="Begin Typing To Search Users..." 
+        hx-post="/search" 
+        hx-trigger="input changed delay:500ms, search" 
+        hx-target="#search-results" 
+        hx-indicator=".htmx-indicator"&gt;
+      
+      &lt;table class="table"&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;First Name&lt;/th&gt;
+            &lt;th&gt;Last Name&lt;/th&gt;
+            &lt;th&gt;Email&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody id="search-results"&gt;
+        &lt;/tbody&gt;
+      &lt;/table&gt;    
+
+      </pre>
+    </code>
+
+    <div>
+        入力はイベントに対してPOSTを発行し、テーブルの本体を結果のコンテンツに設定します。イベントも使用できますが、ユーザーがマウス (またはキーボード以外の方法) でテキストを貼り付けた場合は発生しないことに注意してください。/searchinputkeyup<br>
+        <br>
+        トリガーに修飾子を追加して、delay:500msユーザーが入力を停止するまでクエリの送信を遅らせます。さらに、changedトリガーに修飾子を追加して、ユーザーが入力の値を変更しない場合 (矢印キーを押した場合や、同じ値を貼り付けた場合など) に新しいクエリが送信されないようにしています。<br>
+        <br>
+        入力タイプを使用しているため、入力フィールドに入力をクリアするメッセージが表示searchされます。このトリガーを新しいトリガーにするには、別のトリガーを指定する必要があります。別のトリガーを指定するには、コンマで区切ります。トリガーはフィールドがクリアされたときに実行されますが、 Enter キーを押すだけで500 ミリ秒のイベント遅延を上書きすることもできます。xPOSTsearchinput<br>
+        <br>        
+        最後に、属性を使用して検索が実行中であることを示すインジケーターを表示しますhx-indicator。
+    </div>
+  </body>
+</html>

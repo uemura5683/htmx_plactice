@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>プログレスバー</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/progress-bar/" target="_blank"> プログレスバー </a>
+    </h2>
+    <div>
+      この例では、スムーズにスクロールするプログレス
+      バーを実装する方法を示します。<br />
+      <br />
+      ジョブを開始するPOSTためのコマンドを発行するボタンがある初期状態から始めます。/start
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;div hx-target="this" hx-swap="outerHTML"&gt;
+        &lt;h3&gt;Start Progress&lt;/h3&gt;
+        &lt;button class="btn primary" hx-post="/start"&gt;
+          Start Job
+        &lt;/button&gt;
+    &lt;/div&gt;
+
+      </pre>
+    </code>
+
+    <div>
+      この div は、ステータスと、600
+      ミリ秒ごとに再読み込みされる進行状況バーを含む新しい div
+      に置き換えられます。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+  
+      &lt;div hx-trigger="done" hx-get="/job" hx-swap="outerHTML" hx-target="this"&gt;
+        &lt;h3 role="status" id="pblabel" tabindex="-1" autofocus&gt;Running&lt;/h3&gt;
+      
+        &lt;div
+          hx-get="/job/progress"
+          hx-trigger="every 600ms"
+          hx-target="this"
+          hx-swap="innerHTML"&gt;
+          &lt;div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-labelledby="pblabel"&gt;
+            &lt;div id="pb" class="progress-bar" style="width:0%"&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      </pre>
+    </code>
+
+    <div>
+      このプログレス バーは 600
+      ミリ秒ごとに更新され、「width」スタイル属性とaria-valuenowattributed
+      が現在の進行状況の値に設定されています。プログレス バーの div には id
+      があるため、htmx
+      はスタイル属性を新しい値に設定することで、リクエスト間の遷移をスムーズに行います。これを
+      CSS
+      トランジションと組み合わせると、視覚的な遷移が途切れることなく連続的になります。<br />
+      <br />
+      最後に、プロセスが完了すると、サーバーはHX-Trigger:
+      doneヘッダーを返します。これにより、UI
+      が「完了」状態に更新され、再起動ボタンが UI に追加されます
+      (class-toolsこの例では、ボタンにフェードイン効果を追加するために拡張機能を使用しています)。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+  
+      &lt;div hx-trigger="done" hx-get="/job" hx-swap="outerHTML" hx-target="this"&gt;
+        &lt;h3 role="status" id="pblabel" tabindex="-1" autofocus&gt;Complete&lt;/h3&gt;
+      
+        &lt;div
+          hx-get="/job/progress"
+          hx-trigger="none"
+          hx-target="this"
+          hx-swap="innerHTML"&gt;
+            &lt;div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="122" aria-labelledby="pblabel"&gt;
+              &lt;div id="pb" class="progress-bar" style="width:122%"&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      
+        &lt;button id="restart-btn" class="btn primary" hx-post="/start" classes="add show:600ms"&gt;
+          Restart Job
+        &lt;/button&gt;
+      &lt;/div&gt;
+      </pre>
+    </code>
+
+    <div>
+      この例では、Bootstrap の進行状況バーから借用したスタイルを使用します。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+  
+        .progress {
+            height: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+        }
+        .progress-bar {
+            float: left;
+            width: 0%;
+            height: 100%;
+            font-size: 12px;
+            line-height: 20px;
+            color: #fff;
+            text-align: center;
+            background-color: #337ab7;
+            -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);
+            -webkit-transition: width .6s ease;
+            -o-transition: width .6s ease;
+            transition: width .6s ease;
+        }
+
+      </pre>
+    </code>
+  </body>
+</html>
