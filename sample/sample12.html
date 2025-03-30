@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>ファイルのアップロード</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/file-upload/">
+        ファイルのアップロード
+      </a>
+    </h2>
+    <div>
+      この例では、進行状況バーとともに Ajax
+      経由で送信されるファイルアップロードフォームを作成する方法を示します。<br />
+      <br />
+      ここでは、純粋なJavaScript（htmxのユーティリティメソッドを使用）とハイパースクリプトの2つの異なる実装を紹介します。<br />
+      <br />
+      まず純粋な JavaScript バージョンです。<br />
+      <br />
+      multipart/form-dataファイルが適切にエンコードされるように、フォームのタイプがあります<br />
+      フォームは/upload<br />
+      私たちにはprogress要素がある<br />
+      イベントをリッスンしhtmx:xhr:progress、イベント詳細のプロパティとプロパティvalueに基づいてプログレス
+      バーの属性を更新します。loadedtotal
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;form id='form' hx-encoding='multipart/form-data' hx-post='/upload'&gt;
+        &lt;input type='file' name='file'&gt;
+        &lt;button&gt;
+            Upload
+        &lt;/button&gt;
+        &lt;progress id='progress' value='0' max='100'&gt;&lt;/progress&gt;
+    &lt;/form&gt;
+    &lt;script&gt;
+        htmx.on('#form', 'htmx:xhr:progress', function(evt) {
+          htmx.find('#progress').setAttribute('value', evt.detail.loaded/evt.detail.total * 100)
+        });
+    &lt;/script&gt;
+
+      </pre>
+    </code>
+
+    <div>
+      Hyperscript バージョンは、次の点を除いて非常に似ています。<br />
+      <br />
+      スクリプトはフォーム要素に直接埋め込まれます<br />
+      Hyperscript はより優れた構文を提供します (ただし、htmx API
+      もかなり優れています)。
+    </div>
+
+    <code>
+      <pre style="background: black; color: white">
+  
+      &lt;form hx-encoding='multipart/form-data' hx-post='/upload'
+            _='on htmx:xhr:progress(loaded, total) set #progress.value to (loaded/total)*100'&gt;
+            &lt;input type='file' name='file'&gt;
+            &lt;button&gt;
+                Upload
+            &lt;/button&gt;
+            &lt;progress id='progress' value='0' max='100'&gt;&lt;/progress&gt;
+       &lt;/form&gt;      
+
+      </pre>
+    </code>
+    <div>
+      detailsハイパースクリプトを使用すると、プロパティを変数に直接分解できることに注意してください。
+    </div>
+    <div>
+      <a href="https://htmx.org/examples/file-upload/" target="_blank">
+        https://htmx.org/examples/file-upload/
+      </a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>カスケード選択</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/value-select/" target="_blank"> カスケード選択 </a>
+    </h2>
+    <div>
+      この例では、1
+      つの値をselect別の値で選択された値に依存させる方法を示しますselect。<br />
+      <br />
+      まず、make選択のデフォルト値である Audi
+      から始めます。modelこのメーカーの選択をレンダリングします。次に、make選択トリガーを使用しGETて/modelsモデル
+      オプションを取得し、models選択をターゲットにします。<br />
+      <br />
+      コードは次のとおりです:
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+      &lt;div&gt;
+        &lt;label &gt;Make&lt;/label&gt;
+        &lt;select name="make" hx-get="/models" hx-target="#models" hx-indicator=".htmx-indicator"&gt;
+          &lt;option value="audi"&gt;Audi&lt;/option&gt;
+          &lt;option value="toyota"&gt;Toyota&lt;/option&gt;
+          &lt;option value="bmw"&gt;BMW&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label&gt;Model&lt;/label&gt;
+        &lt;select id="models" name="model"&gt;
+          &lt;option value="a1"&gt;A1&lt;/option&gt;
+          ...
+        &lt;/select&gt;
+        &lt;img class="htmx-indicator" width="20" src="/img/bars.svg"&gt;
+      &lt;/div&gt;    
+      </pre>
+    </code>
+    <div>
+      エンドポイントにリクエストが行われると/models、そのメーカーのモデルが返されます。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+  
+    &lt;option value='325i'&gt;325i&lt;/option&gt;
+    &lt;option value='325ix'&gt;325ix&lt;/option&gt;
+    &lt;option value='X5'&gt;X5&lt;/option&gt; 
+            
+      </pre>
+    </code>
+  </body>
+</html>
