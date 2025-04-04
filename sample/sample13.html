@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>フォームエラー後のファイル入力の保存</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/file-upload-input/">
+        フォームエラー後のファイル入力の保存
+      </a>
+    </h2>
+    <div>
+      プリミティブ値とファイル入力の両方を含むフォームでサーバー側のエラー処理と検証を使用すると、<br>
+      フォームがエラー メッセージを返すときにファイル入力の値が失われます。<br>
+      その結果、ユーザーはファイルを再アップロードする必要があり、ユーザー フレンドリーなエクスペリエンスが損なわれます。<br>
+    </div>
+    <div>前に：</div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;form method="POST" id="binaryForm" enctype="multipart/form-data" hx-swap="outerHTML" hx-target="#binaryForm"&gt;
+      &lt;input type="file" name="binaryFile"&gt;
+      &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+      </pre>
+    </code>
+    <div>後に：</div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;input form="binaryForm" type="file" name="binaryFile"&gt;
+    &lt;form method="POST" id="binaryForm" enctype="multipart/form-data" hx-swap="outerHTML" hx-target="#binaryForm"&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+      </pre>
+    </code>
+    <div>
+      フォームの再構築: バイナリ ファイル入力を HTML 構造のメイン フォーム要素の外側に移動します。<br>
+      <br>
+      フォーム属性の使用: フォーム属性を追加し、その値をメイン フォームの ID に設定することで、バイナリ ファイル入力を強化します。このリンクにより、バイナリ ファイル入力がフォーム要素の外部にある場合でも、フォームに関連付けられます。
+    </div>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>ダイアログ</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/dialogs/">
+        ダイアログ
+      </a>
+    </h2>
+    <div>
+      hx-promptダイアログは、 属性と属性を使用してトリガーできますhx-confirm。<br>
+      これらは、AJAX リクエストをトリガーするユーザー操作によってトリガーされますが、<br>
+      リクエストはダイアログが受け入れられた場合にのみ送信されます。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;div&gt;
+      &lt;button class="btn primary"
+              hx-post="/submit"
+              hx-prompt="Enter a string"
+              hx-confirm="Are you sure?"
+              hx-target="#response"&gt;
+        Prompt Submission
+      &lt;/button&gt;
+      &lt;div id="response"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+      </pre>
+    </code>
+    <div>
+      プロンプト ダイアログにユーザーが入力した値は、ヘッダーでサーバーに送信されますHX-Prompt。この場合、サーバーはユーザーの入力をそのままエコーバックします。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        User entered &lt;i&gt;${response}&lt;/i&gt;
+      </pre>      
+    </code>
+
+    <div id="demo-canvas">
+      <div>
+        <button class="btn primary" hx-post="/submit" hx-prompt="Enter a string" hx-confirm="Are you sure?" hx-target="#response">
+          Prompt Submission
+        </button>
+        <div id="response"></div>
+      </div>
+    </div>
+
+    <script>
+      // routes
+      init("/demo", function(request, params){
+        return submitButton();
+      });
+  
+      onPost("/submit", function(request, params){
+          var response = request.requestHeaders['HX-Prompt'];
+          return promptSubmit(response);
+      });
+  
+      // templates
+      function submitButton() {
+        return `<div>
+                  <button class="btn primary"
+                          hx-post="/submit"
+                          hx-prompt="Enter a string"
+                          hx-confirm="Are you sure?"
+                          hx-target="#response">
+                    Prompt Submission
+                  </button>
+                  <div id="response"></div>
+                </div>`;
+      }
+  
+      function promptSubmit(response) {
+          return `User entered <i>${response}</i>`;
+      }
+    </script>
+  </body>
+</html>

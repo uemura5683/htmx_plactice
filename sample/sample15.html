@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>UIKit を使用したモーダルダイアログ</title>
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+  </head>
+  <body>
+    <h2>
+      <a href="https://htmx.org/examples/modal-uikit/">
+        UIKit を使用したモーダルダイアログ
+      </a>
+    </h2>
+    <div>
+      多くの CSS ツールキットには、モーダル ダイアログ ボックスを作成するためのスタイル (および Javascript) が含まれています。この例では、UIKit を使用して HTMX で動的なダイアログを表示する方法と、Javascript をほとんどまたはまったく使用せずにアニメーション スタイルをトリガーする方法を示します。<br>
+      <br>
+      まず、ダイアログをトリガーするボタンと、ダイアログが読み込まれるマークアップの下部にある DIV を配置します。<br>
+      <br>      
+      これは、UIKit を使用して HTMX でモーダル ダイアログをリモートで読み込む例です。この例では、 Hyperscriptを使用して、このスクリプト言語で htmx と他のライブラリをいかにきれいに結合できるかを示します。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+    &lt;button 
+    id="showButton"
+    hx-get="/uikit-modal.html" 
+    hx-target="#modals-here" 
+    class="uk-button uk-button-primary" 
+    _="on htmx:afterOnLoad wait 10ms then add .uk-open to #modal"&gt;Open Modal&lt;/button&gt;
+  
+    &lt;div id="modals-here"&gt;&lt;/div&gt;  
+      </pre>
+    </code>
+    <div>
+      このボタンは、クリックされたときGETにリクエストを使用します/uikit-modal.html。このファイルの内容は、DIV の下の DOM に追加されます#modals-here。<br>
+      <br>
+      標準の UIKit Javascript ライブラリを使用する代わりに、UIKit のスムーズなアニメーションをトリガーする Hyperscript を少し使用しています。UIKit のアニメーションが正しく実行されるように、10 ミリ秒遅延されます。<br>
+      <br>      
+      最後に、サーバーはUIKitの標準モーダルを少し変更したバージョンで応答します。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        &lt;div id="modal" class="uk-modal" style="display:block;"&gt;
+          &lt;div class="uk-modal-dialog uk-modal-body"&gt;
+            &lt;h2 class="uk-modal-title"&gt;Modal Dialog&lt;/h2&gt;
+            &lt;p&gt;This modal dialog was loaded dynamically by HTMX.&lt;/p&gt;
+            &lt;form _="on submit take .uk-open from #modal"&gt;
+              &lt;div class="uk-margin"&gt;
+                &lt;input class="uk-input" placeholder="What is Your Name?"&gt;
+              &lt;/div&gt;
+              &lt;button type="button" class="uk-button uk-button-primary"&gt;Save Changes&lt;/button&gt;
+              &lt;button 
+                id="cancelButton"
+                type="button" 
+                class="uk-button uk-button-default" 
+                _="on click take .uk-open from #modal wait 200ms then remove #modal"&gt;Close&lt;/button&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      </pre>      
+    </code>
+    <div>
+      ボタンとフォーム上のハイパースクリプトは、このダイアログが完了またはキャンセルされたときにアニメーションをトリガーします。このハイパースクリプトを使用しなかった場合、モーダルは引き続き機能しますが、UIKit のフェードイン アニメーションはトリガーされません。<br>
+      <br>
+      もちろん、この作業には Hyperscript ではなく JavaScript を使用することもできますが、コードがかなり多くなります。
+    </div>
+    <code>
+      <pre style="background: black; color: white">
+
+        window.document.getElementById("showButton").addEventListener("htmx:afterOnLoad", function() {
+          setTimeout(function(){
+            window.document.getElementById("modal").classList.add("uk-open")
+          }, 10)
+        })
+        
+        // This triggers the fade-out animation when the modal is closed.
+        window.document.getElementById("cancelButton").addEventListener("click", function() {
+          window.document.getElementById("modal").classList.remove("uk-open")
+          setTimeout(function(){
+            window.document.getElementById("modals-here").innerHTML = ""
+            ,200
+          })
+        })
+      </pre>      
+    </code>
+  </body>
+</html>
